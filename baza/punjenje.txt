@@ -1,0 +1,61 @@
+INSERT INTO user_role (role) VALUES
+('admin'),
+('portalUser');
+
+INSERT INTO profile (password, username) VALUES
+('p4ssw0rd', 'ana1'),
+('qwerty', 'iva2'),
+('password123', 'maja3'),
+('letmein', 'donata4'),
+('123456', 'klara5');
+
+INSERT INTO users (first_name, last_name, iban, email, active, user_role_id, profile_id) VALUES
+('Ana', 'Anić', 'HR1111111111111111111111111111111', 'ana.anic@example.com', true, 5, 11),
+('Iva', 'Ivić', 'HR2222222222222222222222222222222', 'iva.ivic@example.com', true, 6, 12),
+('Maja', 'Markić', 'HR3333333333333333333333333333333', 'maja.markic@example.com', false, 6, 13),
+('Donata', 'Jelenić', 'HR4444444444444444444444444444444', 'donata.jelenic@example.com', true, 6, 14),
+('Klara', 'Petrić', 'HR5555555555555555555555555555555', 'klara.petric@example.com', false, 6, 15);
+
+INSERT INTO order_status (name) VALUES
+('pending'),
+('paid'),
+('shipped'),
+('delivered');
+
+INSERT INTO categories (name) VALUES
+('T-shirts'),
+('Pants'),
+('Jackets'),
+('Sneakers'),
+('Belts');
+
+INSERT INTO clothes (name, description, size, price, picture, profile_id, category_id) VALUES
+('Red T-shirt', 'Plain red t-shirt made of high-quality cotton', 'M', 19.99, NULL, 11, 6),
+('Black jeans', 'Black slim-fit jeans with a classic look', '32/32', 49.99, NULL, 12, 7),
+('Leather jacket', 'Black leather jacket with a vintage look', 'L', 149.99, NULL, 13, 8),
+('White sneakers', 'Comfortable white sneakers for everyday use', '40', 69.99, NULL, 14, 9),
+('Brown belt', 'Genuine leather belt with a bronze buckle', '95', 39.99, NULL, 15, 10);
+
+INSERT INTO reservations (return_date, clothes_id, profile_id) VALUES
+('2023-04-10 12:00:00',11, 11),
+('2023-04-12 10:00:00', 12, 12),
+('2023-04-15 14:00:00', 13, 13),
+('2023-04-18 16:00:00', 14, 14),
+('2023-04-20 11:00:00', 15, 15);
+
+INSERT INTO orders (delivery_address, price, card_number, status_id, reservation_id) VALUES
+('Ilica 5, Zagreb', 29.99, '1111222233334444', 5, 11),
+('Jadranska 7, Rijeka', 49.99, '5555666677778888', 6, 12),
+('Trg Bana Jelacica 3, Zagreb', 149.99, '1111222233334444', 7, 13),
+('Savska 10, Zagreb', 69.99, '7777888899990000',8,14);
+
+INSERT INTO comments (content, posting_date,profile_id, clothes_id)
+VALUES 
+('Ova majica je super!','08/03/2022', 11, 12),
+('Ove hlače su mi prevelike.','09/03/2022', 12, 13),
+('Odličan kroj ovog sakoa!','18/03/2022', 13, 11),
+('Super kombinacija boja!','28/03/2022', 14, 14),
+('Kvaliteta ovih cipela je sjajna.','08/04/2022', 12, 15),
+('Jako sam zadovoljan ovim odabirom.','08/05/2022', 15, 12);
+
+select * from comments
