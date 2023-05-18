@@ -1,0 +1,21 @@
+<!--<div class="flex flex-row flex-wrap">
+  <div id="a" class="w-[80%] bg-orange-100 h-96 flex-grow-0">
+    <app-main></app-main>
+  </div>
+
+  <div id="b" class="bg-lime-200 flex-grow h-96">
+    <app-sidebar></app-sidebar>
+  </div>
+
+
+
+</div>-->
+
+<div class="grid grid-cols-4 gap-4">
+  <div class="col-span-3 bg-orange-100">
+    <app-main [categoryFromParent]="recivedCategory"></app-main>
+  </div>
+  <div class="col-span-1 bg-lime-200 h-screen">
+    <app-sidebar (emitToParentCategory)="receiveCategory($event)"></app-sidebar>
+  </div>
+</div>

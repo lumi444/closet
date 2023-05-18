@@ -1,0 +1,11 @@
+<div class="bg-lime-200 ">
+
+  <div class="m-10 bg-white flex flex-col w-56 text-center">Categories
+    <div *ngFor="let category of categories" class="flex  pb-2 text-center">
+      <a class="decoration-2 uppercase text-center hover:text-violet-600"
+        (click)="handleClick(category.name)">{{category.name}}</a>
+
+    </div>
+
+  </div>
+</div>
