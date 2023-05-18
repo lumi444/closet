@@ -33,8 +33,15 @@ public class UserService {
     public User findUserById(Long id){
         return  userRepo.findUserById(id).orElseThrow(() -> new UserNotFoundException("User with id "+id+", not found"));
     }
+    public User findUserByName(String name){
+        return  userRepo.findUserByName(name).orElseThrow(() -> new UserNotFoundException("User with name "+name+", not found"));
+    }
 
     public void deleteUser(Long id){
         userRepo.deleteUserById(id);
+    }
+
+    public List<User> listAll() {
+        return userRepo.findAll();
     }
 }

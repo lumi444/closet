@@ -1,48 +1,31 @@
-package infsus.closet.closet.model;
+package infsus.closet.closet.DTO;
 
-import jakarta.persistence.Entity;
+import infsus.closet.closet.model.Profile;
+import infsus.closet.closet.model.UserRole;
 import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
 
-import javax.validation.constraints.Size;
-
-@Entity
-@Table(name = "users")
-public class User {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class UserDTO {
     private String firstName;
 
     private String lastName;
 
-    @Size(min=0,max=10)
     private String iban;
 
     private String email;
 
     private boolean active;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_role_id", nullable = false)
-    private UserRole userRole;
+    private UserRoleDTO userRole;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "profile_id", nullable = false)
-    private Profile profile;
+    private ProfileDTO profile;
 
-    public User() {
+    public UserDTO() {
         // default constructor
     }
 
-    public User(String firstName, String lastName, String iban, String email, boolean active, UserRole userRole, Profile profile) {
+    public UserDTO(String firstName, String lastName, String iban, String email, boolean active, UserRoleDTO userRole, ProfileDTO profile) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.iban = iban;
@@ -53,14 +36,6 @@ public class User {
     }
 
     // getters and setters
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -102,28 +77,20 @@ public class User {
         this.active = active;
     }
 
-    public UserRole getUserRole() {
+    public UserRoleDTO getUserRole() {
         return userRole;
     }
 
-    public void setUserRole(UserRole userRole) {
+    public void setUserRole(UserRoleDTO userRole) {
         this.userRole = userRole;
     }
 
-    public Profile getProfile() {
+    public ProfileDTO getProfile() {
         return profile;
     }
 
-    public void setProfile(Profile profile) {
+    public void setProfile(ProfileDTO profile) {
         this.profile = profile;
     }
 
-    // toString method
-
-    @Override
-    public String toString() {
-        return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", iban=" + iban + ", email="
-                + email + ", active=" + active + ", userRole=" + userRole + ", profile=" + profile + "]";
-    }
 }
-
