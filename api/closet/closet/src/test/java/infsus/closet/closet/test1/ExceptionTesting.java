@@ -23,7 +23,7 @@ public class ExceptionTesting {
         @Test
         public void testException(){
             User user=userRepository.findUserByName("Ana").get();
-            user.setIban("12345678");
+            user.setIban("12345678111");
             Throwable exception=
                     assertThrows(RequestDeniedException.class,
                             ()-> userService.updateUser(user));
