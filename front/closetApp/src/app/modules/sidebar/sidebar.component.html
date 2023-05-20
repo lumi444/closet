@@ -1,11 +1,38 @@
 <div class="bg-lime-200 ">
 
-  <div class="m-10 bg-white flex flex-col w-56 text-center">Categories
+  <div class="m-10 bg-white flex flex-col w-auto text-center">
+
+    <button class=" relative flex justify-end items-end" mat-icon-button [matMenuTriggerFor]="menu"
+      aria-label="Example icon-button with a menu">
+
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>dialpad</mat-icon>
+        <span>Redial</span>
+      </button>
+      <button mat-menu-item disabled>
+        <mat-icon>voicemail</mat-icon>
+        <span>Check voice mail</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications_off</mat-icon>
+        <span>Disable alerts</span>
+      </button>
+    </mat-menu>
+
     <div *ngFor="let category of categories" class="flex  pb-2 text-center">
       <a class="decoration-2 uppercase text-center hover:text-violet-600"
         (click)="handleClick(category.name)">{{category.name}}</a>
 
     </div>
 
+
   </div>
+
+
+
+
+
 </div>

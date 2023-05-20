@@ -1,0 +1,49 @@
+<app-navigation></app-navigation>
+<div *ngIf="!inAddMode" class="relative flex justify-end items-end mr-64">
+  <button type="button" (click)="addNewItem()"
+    class="text-purple-500 border border-purple-500 hover:bg-purple-500 hover:text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-full text-sm p-2.5 text-center inline-flex items-center dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:focus:ring-blue-800 dark:hover:bg-cyan-500 ml-auto">
+    <mat-icon>playlist_add</mat-icon>
+    <span class="sr-only">Icon description</span>
+  </button>
+</div>
+
+<div *ngIf="!inAddMode" class=" flex justify-center items-center pt-3">
+  <div class="grid grid-cols-3 gap-4">
+    <div *ngFor="let a of clothes" class="mt-5">
+      <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
+        <a href="#">
+        </a>
+        <div class="p-5">
+          <a href="#">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{a.name}}</h5>
+          </a>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{a.description}}</p>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{a.size}}</p>
+          <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{a.price}}</p>
+          <button
+            class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800">
+            <span
+              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              Edit
+            </span>
+          </button>
+          <button
+            class="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+            <span
+              class="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              Delete
+
+            </span>
+
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="inAddMode" class="flex justify-center items-center">
+  <div class="w-3/4">
+    <app-add-form></app-add-form>
+  </div>
+</div>
