@@ -7,6 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class MainComponent {
   @Input() categoryFromParent: string = '';
+  @Input() priceRange: number[] = [];
 
   constructor() {}
 }

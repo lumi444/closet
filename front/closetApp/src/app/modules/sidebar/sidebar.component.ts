@@ -1,8 +1,18 @@
 import { trigger } from '@angular/animations';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  EventEmitter,
+  OnInit,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { MatSlider, MatSliderChange } from '@angular/material/slider';
 import { Category } from '@app/models/category';
 import { CategoryService } from '@app/services/categories/category.service';
+import { SearchService } from '@app/services/search/search.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -16,12 +26,23 @@ import { CategoryService } from '@app/services/categories/category.service';
 })
 export class SidebarComponent implements OnInit {
   @Output() emitToParentCategory = new EventEmitter<string>();
-  public categories: Category[] = [];
-  panelOpenState = false;
+  @Output() priceRangeChange = new EventEmitter<number[]>();
 
-  constructor(private categoryService: CategoryService) {}
+  public categories: Category[] = [];
+  public searchQuery: string = '';
+  panelOpenState = false;
+  public selectedPriceRange: number[] = [0, 100000];
+
+  constructor(
+    private categoryService: CategoryService,
+    private searchService: SearchService,
+    private formBuilder: FormBuilder
+  ) {}
   ngOnInit(): void {
     this.getCategories();
+    // this.filterForm = this.formBuilder.group({
+    //   priceRange: this.priceRangeControl,
+    // });
   }
 
   formatLabel(value: number): string {
@@ -48,5 +69,31 @@ export class SidebarComponent implements OnInit {
     console.log('Clicked category:', categoryName);
     this.emitToParentCategory.emit(categoryName);
     // Do something with the clicked value
+  }
+
+  handleSearch(): void {
+    //const priceRange = this.filterForm.value.priceRange;
+    // const minPrice = priceRange[0];
+    // const maxPrice = priceRange[1];
+    this.searchService.setSearchQuery(this.searchQuery);
+
+    this.priceRangeChange.emit(this.selectedPriceRange);
+    //this.searchService.setPriceRange(minPrice, maxPrice);
+  }
+
+  onPriceChange(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    const maxPrice = parseInt(target.value, 10);
+    if (!isNaN(maxPrice)) {
+      this.selectedPriceRange[1] = maxPrice;
+      console.log('zzz' + this.selectedPriceRange[1]);
+    }
+  }
+
+  sliderValue: number = 0;
+
+  onInputChange(event: any) {
+    this.sliderValue = event.value;
+    console.log(this.sliderValue);
   }
 }

@@ -21,6 +21,7 @@ import { AddFormComponent } from './modules/add-form/add-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import { EditFormComponent } from './modules/edit-form/edit-form.component';
+import { FilterPipe } from './filter.pipe';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { EditFormComponent } from './modules/edit-form/edit-form.component';
     ProfileComponent,
     AddFormComponent,
     EditFormComponent,
+    FilterPipe,
   ],
   imports: [
     BrowserModule,

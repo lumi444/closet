@@ -8,10 +8,15 @@ import { ClothesService } from '@app/services/clothes/clothes.service';
 })
 export class BoardComponent {
   public recivedCategory: string = '';
+  public priceRanges: number[] = [];
 
   constructor(private _clothesService: ClothesService) {}
 
   receiveCategory(event: string) {
     this.recivedCategory = event;
+  }
+
+  receivePriceRange(range: number[]) {
+    this.priceRanges = range;
   }
 }

@@ -13,9 +13,11 @@
 
 <div class="grid grid-cols-4 gap-4">
   <div class="col-span-3 ">
-    <app-main [categoryFromParent]="recivedCategory"></app-main>
+    <app-main [categoryFromParent]="recivedCategory" [priceRange]="priceRanges"></app-main>
   </div>
   <div class="col-span-1  h-screen">
-    <app-sidebar (emitToParentCategory)="receiveCategory($event)"></app-sidebar>
+    <app-sidebar (emitToParentCategory)="receiveCategory($event)" (priceRangeChange)="receivePriceRange($event)">
+      <!--(priceRangeChange)="receivePriceRange($event)"-->
+    </app-sidebar>
   </div>
 </div>
