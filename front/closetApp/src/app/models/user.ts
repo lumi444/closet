@@ -13,6 +13,7 @@ export interface UserRole {
 }
 
 export interface Profile {
-  password: string;
-  username: string;
+  id: number;
+  password?: string;
+  username?: string;
 }

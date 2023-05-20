@@ -24,6 +24,14 @@ export class SidebarComponent implements OnInit {
     this.getCategories();
   }
 
+  formatLabel(value: number): string {
+    if (value >= 1000) {
+      return Math.round(value / 1000) + 'k';
+    }
+
+    return `${value}`;
+  }
+
   public getCategories(): void {
     this.categoryService.getCategories().subscribe(
       (response: Category[]) => {

@@ -12,10 +12,10 @@
 </div>-->
 
 <div class="grid grid-cols-4 gap-4">
-  <div class="col-span-3 bg-orange-100">
+  <div class="col-span-3 ">
     <app-main [categoryFromParent]="recivedCategory"></app-main>
   </div>
-  <div class="col-span-1 bg-lime-200 h-screen">
+  <div class="col-span-1  h-screen">
     <app-sidebar (emitToParentCategory)="receiveCategory($event)"></app-sidebar>
   </div>
 </div>

@@ -27,11 +27,11 @@ export class ArticleComponent implements OnChanges {
     this._clothesService.getClothes().subscribe(
       (response) => {
         this.shirts = response.filter(
-          (r) => r.category.name === this.categoryFromParent
+          (r) => r.category?.name === this.categoryFromParent
         );
 
         console.log(this.shirts);
-        this.decodeImages();
+        // this.decodeImages();
       },
       (error: HttpErrorResponse) => {
         console.log(error.message);
@@ -39,13 +39,13 @@ export class ArticleComponent implements OnChanges {
     );
   }
 
-  decodeImages() {
-    for (const shirt of this.shirts) {
-      const base64String = this.arrayBufferToBase64(shirt.picture);
-      shirt.imageUrl = 'data:image/png;base64,' + base64String;
-      console.log(shirt.imageUrl);
-    }
-  }
+  // decodeImages() {
+  //   for (const shirt of this.shirts) {
+  //     const base64String = this.arrayBufferToBase64(shirt.picture);
+  //     shirt.imageUrl = 'data:image/png;base64,' + base64String;
+  //     console.log(shirt.imageUrl);
+  //   }
+  // }
 
   private arrayBufferToBase64(buffer: ArrayBuffer): string {
     let binary = '';

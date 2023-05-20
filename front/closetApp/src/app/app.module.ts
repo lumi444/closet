@@ -18,7 +18,9 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatIconModule } from '@angular/material/icon';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddFormComponent } from './modules/add-form/add-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatSliderModule } from '@angular/material/slider';
+import { EditFormComponent } from './modules/edit-form/edit-form.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,7 @@ import { FormsModule } from '@angular/forms';
     SidebarComponent,
     ProfileComponent,
     AddFormComponent,
+    EditFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,8 @@ import { FormsModule } from '@angular/forms';
     MatIconModule,
     BrowserAnimationsModule,
     FormsModule,
+    MatSliderModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

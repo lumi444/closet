@@ -1,38 +1,81 @@
-<div class="bg-lime-200 ">
+<div class="border-l-1 border-gray-50 border-l shadow-md bg-white">
 
-  <div class="m-10 bg-white flex flex-col w-auto text-center">
-
-    <button class=" relative flex justify-end items-end" mat-icon-button [matMenuTriggerFor]="menu"
-      aria-label="Example icon-button with a menu">
-
-      <mat-icon>more_vert</mat-icon>
-    </button>
-    <mat-menu #menu="matMenu">
-      <button mat-menu-item>
-        <mat-icon>dialpad</mat-icon>
-        <span>Redial</span>
-      </button>
-      <button mat-menu-item disabled>
-        <mat-icon>voicemail</mat-icon>
-        <span>Check voice mail</span>
-      </button>
-      <button mat-menu-item>
-        <mat-icon>notifications_off</mat-icon>
-        <span>Disable alerts</span>
-      </button>
-    </mat-menu>
-
-    <div *ngFor="let category of categories" class="flex  pb-2 text-center">
-      <a class="decoration-2 uppercase text-center hover:text-violet-600"
-        (click)="handleClick(category.name)">{{category.name}}</a>
-
+  <form class="ml-10 mr-10 mt-5">
+    <label for="default-search" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Search</label>
+    <div class="relative">
+      <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+        <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+      </div>
+      <input type="search" id="default-search"
+        class="block w-full p-4 pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+        placeholder="Search..." required>
+      <button type="submit"
+        class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-white bg-gradient-to-br from-purple-400 to-pink-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200">Search</button>
     </div>
+  </form>
+
+  <div class="m-10 mt-5 bg-white flex flex-col w-auto text-center border-b-2  border-b-purple-500 mb-5">
+
+
+
+    <div *ngFor="let category of categories" class="flex pb-2 text-center ml-2 mt-5 mb-2">
+      <a *ngIf="category.name" class="decoration-2 uppercase text-center hover:text-violet-600"
+        (click)="handleClick(category.name)">{{category.name}}</a>
+    </div>
+
 
 
   </div>
 
+  <div class="m-10 mt-5 bg-white flex flex-col w-auto text-start border-b-2  border-b-purple-500 mb-5">Price
+    <div style="">
+      <!-- Adjust the width value as per your requirements -->
+      <mat-slider min="0" max="100000" step="1000" showTickMarks discrete [displayWith]="formatLabel">
+        <input matSliderThumb>
+      </mat-slider>
+    </div>
+  </div>
 
+  <div class="m-10 mt-5 bg-white flex flex-col w-auto text-start border-b-2  border-b-purple-500 mb-5">Size
 
+    <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700 mb-2">
+      <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 accent-purple-200">
+      <label for="bordered-checkbox-1"
+        class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">All</label>
+    </div>
+    <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700 mb-2">
+      <input checked id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 accent-purple-200">
+      <label for="bordered-checkbox-2"
+        class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">XS</label>
 
+    </div>
+    <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700 mb-2">
+      <input checked id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 accent-purple-200">
+      <label for="bordered-checkbox-2"
+        class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">S</label>
 
+    </div>
+    <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700 mb-2">
+      <input checked id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 accent-purple-200">
+      <label for="bordered-checkbox-2"
+        class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">M</label>
+
+    </div>
+    <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700 mb-2">
+      <input checked id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox"
+        class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 accent-purple-200">
+      <label for="bordered-checkbox-2"
+        class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">L</label>
+
+    </div>
+
+  </div>
 </div>

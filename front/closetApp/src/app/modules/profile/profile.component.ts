@@ -11,6 +11,8 @@ import { ClothesService } from '@app/services/clothes/clothes.service';
 export class ProfileComponent implements OnInit {
   public inAddMode: boolean = false;
   public clothes: Clothes[] = [];
+  public editId: number = -1;
+  public inEditMode: boolean = false;
 
   constructor(private clothesService: ClothesService) {}
   ngOnInit(): void {
@@ -20,16 +22,36 @@ export class ProfileComponent implements OnInit {
   getMyClothes(usernm: string) {
     this.clothesService.getClothes().subscribe(
       (response: Clothes[]) => {
-        this.clothes = response.filter((c) => c.profile.username === usernm);
+        this.clothes = response.filter((c) => c.profile?.username === usernm);
         console.log(this.clothes);
       },
       (error: HttpErrorResponse) => {
         console.log(error.message);
       }
     );
+    this.inAddMode = false;
   }
 
   addNewItem() {
     this.inAddMode = true;
+  }
+
+  deleteClothing(clothToDelete: Clothes) {
+    this.clothesService
+      .deleteClothes(clothToDelete.id ? clothToDelete.id : -1)
+      .subscribe(
+        (response: void) => {
+          location.reload();
+        },
+        (error: HttpErrorResponse) => {
+          console.log(error.message);
+        }
+      );
+  }
+
+  editClothes(clothToEdit: Clothes) {
+    this.inEditMode = true;
+    this.editId = clothToEdit.id ? clothToEdit.id : -1;
+    console.log(clothToEdit);
   }
 }
