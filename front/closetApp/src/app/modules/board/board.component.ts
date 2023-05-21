@@ -9,6 +9,7 @@ import { ClothesService } from '@app/services/clothes/clothes.service';
 export class BoardComponent {
   public recivedCategory: string = '';
   public priceRanges: number[] = [];
+  filterCriteria: string[] = [];
 
   constructor(private _clothesService: ClothesService) {}
 
@@ -18,5 +19,9 @@ export class BoardComponent {
 
   receivePriceRange(range: number[]) {
     this.priceRanges = range;
+  }
+
+  handleFilterCriteriaChanged(criteria: string[]): void {
+    this.filterCriteria = criteria;
   }
 }

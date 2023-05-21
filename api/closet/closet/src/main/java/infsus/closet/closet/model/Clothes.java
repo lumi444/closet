@@ -29,9 +29,11 @@ public class Clothes implements Serializable {
 
     private double price;
 
+
+
     @Basic(fetch = FetchType.LAZY)
-    @Column(name = "picture", columnDefinition = "bytea")
-    private byte[] picture;
+    @Column(name = "picture")
+    private String picture;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "profile_id", nullable = false)
@@ -45,7 +47,7 @@ public class Clothes implements Serializable {
         // default constructor
     }
 
-    public Clothes(String name, String description, String size, double price, byte[] picture, Profile profile, Category category) {
+    public Clothes(String name, String description, String size, double price, String picture, Profile profile, Category category) {
         this.name = name;
         this.description = description;
         this.size = size;
@@ -97,11 +99,11 @@ public class Clothes implements Serializable {
         this.price = price;
     }
 
-    public byte[] getPicture() {
+    public String getPicture() {
         return picture;
     }
 
-    public void setPicture(byte[] picture) {
+    public void setPicture(String picture) {
         this.picture = picture;
     }
 

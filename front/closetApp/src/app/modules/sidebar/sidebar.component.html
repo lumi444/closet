@@ -54,37 +54,38 @@
   <div class="m-10 mt-5 bg-white flex flex-col w-auto text-start border-b-2  border-b-purple-500 mb-5">Size
 
     <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700 mb-2">
-      <input id="bordered-checkbox-1" type="checkbox" value="" name="bordered-checkbox"
+      <input checked id="checkbox-all" type="checkbox" value="" name="bordered-checkboxall"
+        (change)="handleCheckboxSelection($event, 'all')"
         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 accent-purple-200">
-      <label for="bordered-checkbox-1"
+      <label for="checkbox-all"
         class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">All</label>
     </div>
     <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700 mb-2">
-      <input checked id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox"
+      <input id="checkbox-xs" type="checkbox" value="" name="bordered-checkboxxs"
+        (change)="handleCheckboxSelection($event, 'XS')"
         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 accent-purple-200">
-      <label for="bordered-checkbox-2"
-        class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">XS</label>
+      <label for="checkbox-xs" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">XS</label>
 
     </div>
     <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700 mb-2">
-      <input checked id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox"
+      <input id="checkbox-s" type="checkbox" value="" name="bordered-checkboxs"
+        (change)="handleCheckboxSelection($event, 'S')"
         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 accent-purple-200">
-      <label for="bordered-checkbox-2"
-        class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">S</label>
+      <label for="checkbox-s" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">S</label>
 
     </div>
     <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700 mb-2">
-      <input checked id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox"
+      <input id="checkbox-m" type="checkbox" value="" name="bordered-checkboxm"
+        (change)="handleCheckboxSelection($event, 'M')"
         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 accent-purple-200">
-      <label for="bordered-checkbox-2"
-        class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">M</label>
+      <label for="checkbox-m" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">M</label>
 
     </div>
     <div class="flex items-center pl-4 border border-gray-200 rounded dark:border-gray-700 mb-2">
-      <input checked id="bordered-checkbox-2" type="checkbox" value="" name="bordered-checkbox"
+      <input id="checkbox-l" type="checkbox" value="" name="bordered-checkboxl"
+        (change)="handleCheckboxSelection($event, 'L')"
         class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600 accent-purple-200">
-      <label for="bordered-checkbox-2"
-        class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">L</label>
+      <label for="checkbox-l" class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">L</label>
 
     </div>
 

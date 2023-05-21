@@ -22,7 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSliderModule } from '@angular/material/slider';
 import { EditFormComponent } from './modules/edit-form/edit-form.component';
 import { FilterPipe } from './filter.pipe';
-
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,6 +51,8 @@ import { FilterPipe } from './filter.pipe';
     FormsModule,
     MatSliderModule,
     ReactiveFormsModule,
+    MatInputModule,
+    MatFormFieldModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

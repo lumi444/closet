@@ -27,6 +27,8 @@ import { SearchService } from '@app/services/search/search.service';
 export class SidebarComponent implements OnInit {
   @Output() emitToParentCategory = new EventEmitter<string>();
   @Output() priceRangeChange = new EventEmitter<number[]>();
+  @Output() filterCriteriaChanged = new EventEmitter<string[]>();
+  selectedSizes: string[] = [];
 
   public categories: Category[] = [];
   public searchQuery: string = '';
@@ -40,6 +42,7 @@ export class SidebarComponent implements OnInit {
   ) {}
   ngOnInit(): void {
     this.getCategories();
+    // this.selectedSizes = ['all'];
     // this.filterForm = this.formBuilder.group({
     //   priceRange: this.priceRangeControl,
     // });
@@ -51,6 +54,23 @@ export class SidebarComponent implements OnInit {
     }
 
     return `${value}`;
+  }
+
+  handleCheckboxSelection(event: any, size: string): void {
+    if (event.target.checked) {
+      if (!this.selectedSizes.includes(size)) {
+        this.selectedSizes.push(size);
+      }
+    } else {
+      const index = this.selectedSizes.indexOf(size);
+      if (index !== -1) {
+        this.selectedSizes.splice(index, 1);
+      }
+    }
+    const clonedSizes = [...this.selectedSizes];
+    this.filterCriteriaChanged.emit(clonedSizes);
+
+    this.filterCriteriaChanged.emit(clonedSizes);
   }
 
   public getCategories(): void {
@@ -78,6 +98,7 @@ export class SidebarComponent implements OnInit {
     this.searchService.setSearchQuery(this.searchQuery);
 
     this.priceRangeChange.emit(this.selectedPriceRange);
+    this.filterCriteriaChanged.emit(this.selectedSizes);
     //this.searchService.setPriceRange(minPrice, maxPrice);
   }
 

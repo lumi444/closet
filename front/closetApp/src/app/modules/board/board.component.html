@@ -13,10 +13,12 @@
 
 <div class="grid grid-cols-4 gap-4">
   <div class="col-span-3 ">
-    <app-main [categoryFromParent]="recivedCategory" [priceRange]="priceRanges"></app-main>
+    <app-main [categoryFromParent]="recivedCategory" [priceRange]="priceRanges" [filterCriteria]="filterCriteria">
+    </app-main>
   </div>
   <div class="col-span-1  h-screen">
-    <app-sidebar (emitToParentCategory)="receiveCategory($event)" (priceRangeChange)="receivePriceRange($event)">
+    <app-sidebar (emitToParentCategory)="receiveCategory($event)" (priceRangeChange)="receivePriceRange($event)"
+      (filterCriteriaChanged)="handleFilterCriteriaChanged($event)">
       <!--(priceRangeChange)="receivePriceRange($event)"-->
     </app-sidebar>
   </div>

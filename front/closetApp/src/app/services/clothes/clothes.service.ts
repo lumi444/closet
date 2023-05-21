@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Clothes } from '@app/models/clothes';
 import { Observable } from 'rxjs';
@@ -34,5 +34,27 @@ export class ClothesService {
 
   public deleteClothes(id: number): Observable<void> {
     return this.http.delete<void>(`${this.serverApiUrl}/clothes/delete/${id}`);
+  }
+
+  addClothesWithPicture(
+    clothes: Clothes,
+    pictureFile: File
+  ): Observable<Clothes> {
+    console.log('kurac');
+    const formData: FormData = new FormData();
+    formData.append('clothes', JSON.stringify(clothes));
+    formData.append('pictureFile', pictureFile, pictureFile.name);
+
+    const httpOptions = {
+      headers: new HttpHeaders({
+        enctype: 'multipart/form-data',
+      }),
+    };
+
+    return this.http.post<Clothes>(
+      `${this.serverApiUrl}/add-file`,
+      formData,
+      httpOptions
+    );
   }
 }
